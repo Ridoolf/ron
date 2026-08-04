@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 80 80"
+  fill="none"
+  aria-hidden="true"
+>
+  <g
+    stroke="currentColor"
+    stroke-width="2.75"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  >
+    <!-- Edificio izquierdo -->
+    <path d="M10 62V41L24 29V62" />
+    <!-- Edificio central (el más alto) -->
+    <path d="M24 29L40 15L56 31V62" />
+    <!-- Edificio derecho -->
+    <path d="M56 31L68 41V62" />
+    <!-- Base -->
+    <path d="M8 62H70" />
+  </g>
+</svg>
