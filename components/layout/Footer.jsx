@@ -2,6 +2,7 @@ import Link from "next/link";
 import { footerNav } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site";
 import { buildDirectWhatsAppUrl } from "@/lib/whatsapp";
+import { BrandWordmark } from "./BrandWordmark";
 import { LogoMark } from "./LogoMark";
 
 export function Footer() {
@@ -9,9 +10,9 @@ export function Footer() {
     <footer className="mt-auto border-t border-border bg-dark text-dark-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
-          <Link href="/" className="inline-flex items-center gap-3">
-            <LogoMark className="h-10 w-10 text-dark-foreground" />
-            <span className="font-serif text-lg">{siteConfig.shortName}</span>
+          <Link href="/" className="inline-flex items-center gap-2.5">
+            <LogoMark className="h-10 w-auto" />
+            <BrandWordmark className="block" />
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-dark-foreground/70">
             {siteConfig.tagline}. Arquitectura, construcción y tecnología para

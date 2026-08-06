@@ -3,6 +3,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Hero } from "@/components/sections/Hero";
 import { ServiceDetail } from "@/components/sections/ServiceDetail";
 import { getAllServiceSlugs, getServiceBySlug } from "@/lib/services";
+import { getServiceImage } from "@/lib/images";
 
 export async function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
@@ -39,7 +40,12 @@ export default async function ServicePage({ params }) {
           { label: service.shortTitle, href: `/servicios/${service.slug}` },
         ]}
       />
-      <Hero compact title={service.title} subtitle={service.tagline} />
+      <Hero
+        compact
+        backgroundImage={getServiceImage(service.slug)}
+        title={service.title}
+        subtitle={service.tagline}
+      />
       <ServiceDetail service={service} />
     </>
   );

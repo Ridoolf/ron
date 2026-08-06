@@ -5,28 +5,40 @@ import {
   ClipboardCheck,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/FadeIn";
+import { SectionHeading } from "@/components/ui/SectionLabel";
 
 const icons = [CircleDollarSign, Users, Siren, ClipboardCheck];
 
-export function Benefits({ items, title = "¿Cuáles son los beneficios de contratarnos?" }) {
+export function Benefits({
+  items,
+  title = "¿Cuáles son los beneficios de contratarnos?",
+  bubble = false,
+}) {
   return (
-    <section className="border-y border-border bg-background py-16 md:py-20">
+    <section className={bubble ? "section-premium bg-background" : "border-y border-border py-16 md:py-24"}>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <FadeIn className="mx-auto mb-10 max-w-2xl text-center">
-          <h2 className="text-3xl text-accent md:text-4xl">{title}</h2>
+        <FadeIn className="mx-auto mb-12 max-w-3xl text-center">
+          <SectionHeading
+            label="Beneficios"
+            title={title}
+            align="center"
+            className="[&_.gold-rule]:mx-auto"
+          />
         </FadeIn>
 
-        <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, index) => {
             const Icon = icons[index % icons.length];
             return (
               <StaggerItem key={item.title}>
-                <article className="flex h-full flex-col rounded-sm bg-card p-6 text-center transition-transform hover:-translate-y-0.5">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background">
-                    <Icon className="h-5 w-5 text-foreground" strokeWidth={1.5} />
+                <article className="flex h-full flex-col border border-white/10 bg-card p-7 text-center transition-colors hover:border-accent/40 md:p-8">
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center border border-accent/30 bg-accent/5">
+                    <Icon className="h-6 w-6 text-accent" strokeWidth={1.25} />
                   </div>
-                  <h3 className="text-lg">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="text-sm font-bold tracking-[0.06em] text-accent">
+                    {item.title}
+                  </h3>
+                  <p className="text-body mt-3 text-sm normal-case tracking-normal">
                     {item.description}
                   </p>
                 </article>

@@ -4,22 +4,34 @@ import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Benefits } from "@/components/sections/Benefits";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { CtaSection } from "@/components/sections/CtaSection";
-import { siteConfig, trustItems, benefits } from "@/lib/site";
+import {
+  siteConfig,
+  trustItems,
+  benefits,
+  heroRotatingPhrases,
+  heroFixedLine,
+} from "@/lib/site";
 import { getFeaturedServices } from "@/lib/services";
 
 export default function HomePage() {
   return (
-    <>
-      <Hero
-        eyebrow={siteConfig.tagline}
-        title="Arquitectura, construcción y tecnología para proyectos residenciales y comerciales"
-        subtitle="Mantenimiento preventivo y correctivo, refacciones, diseño, instalaciones eléctricas y domótica. Buenos Aires y Bariloche."
-      />
-      <TrustStrip items={trustItems} />
-      <ServiceGrid services={getFeaturedServices(6)} />
-      <Benefits items={benefits} />
-      <AboutPreview />
-      <CtaSection />
-    </>
+    <div className="section-float">
+      <div className="home-hero-viewport">
+        <Hero
+          eyebrow={siteConfig.tagline}
+          rotatingHeadline={{
+            phrases: heroRotatingPhrases,
+            fixedLine: heroFixedLine,
+          }}
+          subtitle="Mantenimiento integral en Buenos Aires y Bariloche."
+          viewportFit
+        />
+        <TrustStrip items={trustItems} docked />
+      </div>
+      <ServiceGrid services={getFeaturedServices(6)} bubble />
+      <Benefits items={benefits} bubble />
+      <AboutPreview bubble />
+      <CtaSection bubble />
+    </div>
   );
 }

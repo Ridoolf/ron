@@ -116,7 +116,7 @@ export function QuoteForm() {
           />
         </div>
 
-        <button type="submit" className={buttonVariants({ variant: "outline", size: "lg" })}>
+        <button type="submit" className={buttonVariants({ variant: "accent", size: "lg" })}>
           Enviar por WhatsApp
         </button>
       </form>

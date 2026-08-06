@@ -1,36 +1,55 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SectionHeading } from "@/components/ui/SectionLabel";
 import { buttonVariants } from "@/components/ui/Button";
+import { IMAGES } from "@/lib/images";
 
-export function AboutPreview() {
+export function AboutPreview({ bubble = false }) {
   return (
-    <section className="py-16 md:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6">
+    <section className={bubble ? "section-premium bg-muted/40" : "py-16 md:py-24"}>
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:gap-14 md:px-6">
         <FadeIn>
-          <p className="text-xs uppercase tracking-[0.25em] text-accent">Nosotros</p>
-          <h2 className="mt-2 text-3xl md:text-4xl">Somos padre e hija</h2>
-          <div className="my-5 h-px w-16 bg-accent" />
-          <p className="text-base leading-relaxed text-muted-foreground">
+          <SectionHeading label="Nosotros" title="Somos padre e hija" />
+          <p className="text-body mt-6 text-base">
             Combinamos experiencia, compromiso y atención personalizada para
             cuidar edificios, casas y comercios. Creemos en el mantenimiento
             preventivo, la transparencia en cada visita y soluciones que duran en
             el tiempo.
           </p>
-          <Link href="/nosotros" className={buttonVariants({ variant: "outline", size: "md" }) + " mt-8 inline-flex"}>
+          <Link
+            href="/nosotros"
+            className={buttonVariants({ variant: "outline", size: "md" }) + " mt-8 inline-flex"}
+          >
             Conocer más
           </Link>
         </FadeIn>
 
-        <FadeIn delay={0.1} className="rounded-sm border border-border bg-card p-8">
-          <p className="font-serif text-2xl leading-snug">
-            Mantenemos y mejoramos lo que más valorás.
-          </p>
-          <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-            <li>Propietarios de edificios</li>
-            <li>Dueños de casas</li>
-            <li>Dueños de comercios</li>
-            <li>Administradores de consorcios</li>
-          </ul>
+        <FadeIn delay={0.1} className="relative">
+          <div className="relative aspect-[4/5] overflow-hidden border border-white/10 shadow-[var(--shadow-premium)]">
+            <Image
+              src={IMAGES.nosotros.equipo}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p className="heading-section text-lg normal-case tracking-wide md:text-xl">
+                Mantenemos y mejoramos lo que más valorás.
+              </p>
+              <ul className="text-body mt-5 space-y-2 text-sm normal-case tracking-normal">
+                <li>Propietarios de edificios</li>
+                <li>Dueños de casas</li>
+                <li>Dueños de comercios</li>
+                <li>Administradores de consorcios</li>
+              </ul>
+            </div>
+          </div>
         </FadeIn>
       </div>
     </section>

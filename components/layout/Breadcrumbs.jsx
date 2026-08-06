@@ -12,7 +12,7 @@ export function Breadcrumbs({ items }) {
   ];
 
   return (
-    <nav aria-label="Breadcrumb" className="border-b border-border/60 bg-card/50">
+    <nav aria-label="Breadcrumb" className="border-b border-white/10 bg-card">
       <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-3 text-sm text-muted-foreground md:px-6">
         {crumbs.map((item, index) => {
           const isLast = index === crumbs.length - 1;

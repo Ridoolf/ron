@@ -2,6 +2,7 @@ import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Hero } from "@/components/sections/Hero";
 import { services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 
 export const metadata = {
   title: "Servicios",
@@ -13,6 +14,7 @@ export default function ServiciosPage() {
     <>
       <Hero
         compact
+        backgroundImage={IMAGES.hero.servicios}
         eyebrow="Servicios"
         title="Soluciones integrales para cada necesidad"
         subtitle="Mantenimiento, proyectos y tecnología con un mismo equipo de confianza."

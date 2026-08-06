@@ -3,10 +3,11 @@ import { QuoteForm } from "@/components/sections/QuoteForm";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { siteConfig } from "@/lib/site";
 import { buildDirectWhatsAppUrl } from "@/lib/whatsapp";
+import { IMAGES } from "@/lib/images";
 
 export const metadata = {
   title: "Contacto",
-  description: `Solicitá presupuesto para reformas, diseño o administración de consorcio. ${siteConfig.name}.`,
+  description: `Solicitá presupuesto para reformas, diseño de interiores, mantenimiento preventivo o administración de consorcio. ${siteConfig.name}.`,
 };
 
 export default function ContactoPage() {
@@ -14,6 +15,7 @@ export default function ContactoPage() {
     <>
       <Hero
         compact
+        backgroundImage={IMAGES.hero.home}
         eyebrow="Contacto"
         title="Solicitá tu presupuesto"
         subtitle="Completá el formulario y te derivamos a WhatsApp con tu consulta lista para enviar."
@@ -23,10 +25,11 @@ export default function ContactoPage() {
         <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-2 md:px-6">
           <div>
             <FadeIn>
-              <h2 className="text-3xl uppercase tracking-wide">Solicita tu presupuesto</h2>
-              <div className="my-5 h-1 w-16 bg-foreground" />
+              <h2 className="heading-section text-2xl">Solicita tu presupuesto</h2>
+              <div className="gold-rule my-5" />
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Elegí el tipo de servicio que necesitás — reformas, diseño,
+                Elegí el tipo de servicio que necesitás — reformas, diseño de
+                interiores, mantenimiento preventivo, instalaciones,
                 administración de consorcio u otro — y envianos tu consulta por
                 WhatsApp. Atención personalizada y respuesta rápida.
               </p>
@@ -37,8 +40,8 @@ export default function ContactoPage() {
           </div>
 
           <FadeIn delay={0.1} className="flex flex-col justify-center">
-            <div className="rounded-sm border border-border bg-card p-8">
-              <h3 className="font-serif text-2xl">Datos de contacto</h3>
+            <div className="border border-white/10 bg-card p-8">
+              <h3 className="font-brand text-xl font-bold">Datos de contacto</h3>
               <ul className="mt-6 space-y-4 text-sm text-muted-foreground">
                 <li>
                   <span className="block text-xs uppercase tracking-wide text-foreground">

@@ -7,10 +7,10 @@ import { mainNav } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 export const navLinkClass =
-  "rounded-sm px-4 py-2 font-[family-name:var(--font-montserrat)] text-xs font-medium uppercase tracking-[0.14em] text-dark-foreground/90 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
+  "rounded-xl px-4 py-2 font-[family-name:var(--font-montserrat)] text-xs font-medium uppercase tracking-[0.14em] text-dark-foreground/90 transition-colors hover:bg-white/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
 const panelClass =
-  "nav-dropdown-panel rounded-md border border-white/10 bg-dark text-dark-foreground shadow-xl";
+  "nav-dropdown-panel border border-white/10 bg-dark text-dark-foreground";
 
 function useCanHover() {
   const [canHover, setCanHover] = useState(false);
@@ -44,7 +44,7 @@ function MegaMenuPanel({ groups }) {
               <li key={child.href}>
                 <Link
                   href={child.href}
-                  className="block rounded-sm px-2 py-1.5 transition-colors hover:bg-white/5 hover:text-accent"
+                  className="block rounded-xl px-2 py-1.5 transition-colors hover:bg-white/5 hover:text-accent"
                 >
                   <span className="block font-[family-name:var(--font-montserrat)] text-sm font-medium">
                     {child.label}
@@ -71,7 +71,7 @@ function SimpleMenuPanel({ items }) {
         <li key={child.href}>
           <Link
             href={child.href}
-            className="block rounded-sm px-3 py-2 font-[family-name:var(--font-montserrat)] text-sm transition-colors hover:bg-white/5 hover:text-accent"
+            className="block rounded-xl px-3 py-2 font-[family-name:var(--font-montserrat)] text-sm transition-colors hover:bg-white/5 hover:text-accent"
           >
             {child.label}
           </Link>

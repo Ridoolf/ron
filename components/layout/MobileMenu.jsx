@@ -27,7 +27,7 @@ export function MobileMenu() {
         aria-label={open ? "Cerrar menú" : "Abrir menú"}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-sm text-dark-foreground transition-colors hover:bg-white/10"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-dark-foreground transition-colors hover:bg-white/10"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -43,7 +43,7 @@ export function MobileMenu() {
 
       <nav
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-[min(100%,20rem)] flex-col bg-dark px-6 py-6 text-dark-foreground shadow-2xl transition-transform duration-300 ease-out",
+          "fixed inset-y-0 right-0 z-50 flex w-[min(100%,20rem)] flex-col rounded-l-2xl bg-dark px-6 py-6 text-dark-foreground shadow-[var(--shadow-bubble-lg)] transition-transform duration-300 ease-out",
           open ? "translate-x-0" : "translate-x-full"
         )}
         aria-hidden={!open}
@@ -54,7 +54,7 @@ export function MobileMenu() {
             type="button"
             aria-label="Cerrar menú"
             onClick={() => setOpen(false)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm hover:bg-white/10"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl hover:bg-white/10"
           >
             <X className="h-5 w-5" />
           </button>

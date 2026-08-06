@@ -1,15 +1,10 @@
-import { Cormorant_Garamond, DM_Sans, Montserrat } from "next/font/google";
+import { DM_Sans, Montserrat } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { siteConfig } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -24,20 +19,40 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: IMAGES.og.default,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="es"
-      className={`${cormorant.variable} ${dmSans.variable} ${montserrat.variable} h-full`}
+      suppressHydrationWarning
+      className={`${dmSans.variable} ${montserrat.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col antialiased">
+      <body
+        suppressHydrationWarning
+        className="flex min-h-full flex-col antialiased"
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
