@@ -8,14 +8,35 @@ Sitio web multipágina para **Soluciones Integrales RON** — arquitectura, cons
 - React 19
 - Tailwind CSS 4
 
+## Requisitos
+
+- Node.js 20 o superior
+- npm 10+
+
 ## Desarrollo local
 
 ```bash
 npm install
+npm run check:images   # opcional: lista fotos faltantes en public/images/
 npm run dev
 ```
 
 Abrí [http://localhost:3000](http://localhost:3000).
+
+Si `npm install` falla con error de certificado SSL en Windows, el repo incluye `.npmrc` con `node-options=--use-system-ca`. Tras instalar, si Next avisa sobre `sharp`, ejecutá:
+
+```bash
+npm approve-scripts sharp
+npm rebuild sharp
+```
+
+### Imágenes
+
+Las rutas esperadas están documentadas en [`public/images/README.md`](public/images/README.md). Sin esos archivos WebP el sitio compila, pero los heroes y tarjetas no muestran fotos.
+
+## Próximos pasos (diseño)
+
+Opciones de animaciones y componentes para Fase 3: [`content/CATALOGO_ANIMACIONES.md`](content/CATALOGO_ANIMACIONES.md).
 
 ## Build
 

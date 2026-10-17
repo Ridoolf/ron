@@ -76,8 +76,8 @@ export function Hero({
       <div
         className={
           viewportFit
-            ? "relative mx-auto flex h-full max-w-6xl flex-col justify-start px-4 pt-16 pb-4 md:px-8 md:pt-20 lg:px-10"
-            : "relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 py-28 md:min-h-[92vh] md:px-8 lg:px-10"
+            ? "relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-start px-4 pt-16 pb-4 md:px-8 md:pt-20 lg:px-10"
+            : "relative z-10 mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 py-28 md:min-h-[92vh] md:px-8 lg:px-10"
         }
       >
         <FadeIn className="max-w-4xl">

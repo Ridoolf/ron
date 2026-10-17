@@ -8,7 +8,7 @@ import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
   return (
-    <header className="nav-elevated sticky top-0 z-50 border-b border-white/10 bg-dark text-dark-foreground">
+    <header className="nav-elevated sticky top-0 z-50 isolate border-b border-white/10 bg-dark text-dark-foreground">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-8 lg:px-10">
         <Link href="/" className="flex shrink-0 items-center gap-4">
           <LogoMark />

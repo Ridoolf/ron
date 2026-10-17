@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 const INTERVAL_MS = 3500;
+const HEIGHT_TRANSITION = { duration: 0.42, ease: [0.4, 0, 0.2, 1] };
 
 export function HeroRotatingHeadline({ phrases, fixedLine, className }) {
   const shouldReduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
+  const measureRef = useRef(null);
+  const [slotHeight, setSlotHeight] = useState(null);
 
   useEffect(() => {
     if (shouldReduceMotion || phrases.length <= 1) return;
@@ -22,13 +25,38 @@ export function HeroRotatingHeadline({ phrases, fixedLine, className }) {
   const currentPhrase = phrases[shouldReduceMotion ? 0 : index];
   const srFullText = `${phrases.join(", ")} ${fixedLine}`;
 
+  const measure = useCallback(() => {
+    const el = measureRef.current;
+    if (el) {
+      setSlotHeight(el.getBoundingClientRect().height);
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [currentPhrase, measure]);
+
+  useEffect(() => {
+    const el = measureRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [currentPhrase, measure]);
+
   return (
     <h1 className={className}>
       <span className="sr-only">{srFullText}</span>
-      <span
-        className="relative block min-h-[2.65em] overflow-x-hidden sm:min-h-[2.35em] md:min-h-0"
+      <motion.span
+        className="relative isolate block overflow-hidden"
         aria-hidden="true"
         aria-live="polite"
+        initial={false}
+        animate={{
+          height: shouldReduceMotion ? "auto" : (slotHeight ?? "auto"),
+        }}
+        transition={shouldReduceMotion ? { duration: 0 } : HEIGHT_TRANSITION}
       >
         {shouldReduceMotion ? (
           <span className="block">{currentPhrase}</span>
@@ -36,7 +64,8 @@ export function HeroRotatingHeadline({ phrases, fixedLine, className }) {
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
               key={currentPhrase}
-              className="block"
+              ref={measureRef}
+              className="block w-full"
               initial={{ x: 48, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -48, opacity: 0 }}
@@ -46,7 +75,7 @@ export function HeroRotatingHeadline({ phrases, fixedLine, className }) {
             </motion.span>
           </AnimatePresence>
         )}
-      </span>
+      </motion.span>
       <span
         className="text-accent-strong mt-3 block text-balance sm:mt-2.5 md:mt-3"
         aria-hidden="true"

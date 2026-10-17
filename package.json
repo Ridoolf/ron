@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:images": "node scripts/check-images.mjs"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.3.7",
@@ -25,5 +29,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true
   }
 }
