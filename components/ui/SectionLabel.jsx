@@ -4,7 +4,6 @@ export function SectionLabel({ children, className }) {
   return (
     <div className={cn("mb-5", className)}>
       <p className="text-label">{children}</p>
-      <div className="gold-rule mt-3" />
     </div>
   );
 }
@@ -17,7 +16,11 @@ export function SectionHeading({ label, title, accent, className, align = "left"
         className
       )}
     >
-      {label && <SectionLabel className={align === "center" ? "mx-auto w-fit" : undefined}>{label}</SectionLabel>}
+      {label && (
+        <SectionLabel className={align === "center" ? "mx-auto w-fit" : undefined}>
+          {label}
+        </SectionLabel>
+      )}
       <h2 className="heading-section text-2xl md:text-3xl lg:text-4xl">
         {title}
         {accent && (

@@ -196,6 +196,7 @@ h1 {
 .home-hero-viewport {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
+  gap: clamp(1.25rem, 4vh, 2.25rem);
   min-height: calc(100svh - var(--site-header-height));
 }
 
@@ -231,6 +232,89 @@ h1 {
   transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   box-shadow: var(--shadow-premium);
+}
+
+/* Borde luminoso en gradiente (1px + bloom suave), estilo premium */
+.card-luminous-edge {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--bubble-radius);
+  background: var(--card);
+  transition: box-shadow 0.35s ease;
+}
+
+.card-luminous-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* Brillo en sup. izq. e inf. der.; apagado en sup. der. e inf. izq. */
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 28deg,
+    rgb(255 255 255 / 0.04) 40deg,
+    transparent 58deg,
+    rgb(255 255 255 / 0.05) 74deg,
+    color-mix(in srgb, var(--accent) 52%, #6b4f1a) 124deg,
+    color-mix(in srgb, var(--accent) 68%, #6b4f1a) 138deg,
+    color-mix(in srgb, var(--accent) 45%, #6b4f1a) 154deg,
+    transparent 204deg,
+    rgb(255 255 255 / 0.03) 218deg,
+    transparent 232deg,
+    rgb(255 255 255 / 0.04) 268deg,
+    color-mix(in srgb, var(--accent) 86%, white) 304deg,
+    color-mix(in srgb, var(--accent) 94%, white) 324deg,
+    transparent 352deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.card-luminous-edge::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 62% 52% at 0% 0%, rgb(221 175 98 / 0.48), transparent 72%),
+    radial-gradient(ellipse 62% 52% at 100% 100%, rgb(180 130 55 / 0.38), transparent 72%);
+  filter: blur(7px);
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.card-luminous-edge:hover::before {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 28deg,
+    rgb(255 255 255 / 0.06) 40deg,
+    transparent 58deg,
+    rgb(255 255 255 / 0.07) 74deg,
+    color-mix(in srgb, var(--accent) 58%, #6b4f1a) 124deg,
+    color-mix(in srgb, var(--accent) 78%, #6b4f1a) 138deg,
+    color-mix(in srgb, var(--accent) 52%, #6b4f1a) 154deg,
+    transparent 204deg,
+    rgb(255 255 255 / 0.04) 218deg,
+    transparent 232deg,
+    rgb(255 255 255 / 0.06) 268deg,
+    color-mix(in srgb, var(--accent) 92%, white) 304deg,
+    color-mix(in srgb, var(--accent) 98%, white) 324deg,
+    transparent 352deg
+  );
+}
+
+.card-luminous-edge:hover::after {
+  opacity: 0.82;
 }
 
 .hero-overlay {

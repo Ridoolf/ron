@@ -76,7 +76,7 @@ export function Hero({
       <div
         className={
           viewportFit
-            ? "relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-start px-4 pt-16 pb-4 md:px-8 md:pt-20 lg:px-10"
+            ? "relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-start px-4 pt-16 pb-6 md:px-8 md:pt-20 md:pb-10 lg:px-10"
             : "relative z-10 mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 py-28 md:min-h-[92vh] md:px-8 lg:px-10"
         }
       >
@@ -102,7 +102,9 @@ export function Hero({
               {subtitle}
             </p>
           )}
-          <div className={`flex flex-wrap gap-4 ${viewportFit ? "mt-8" : "mt-10"}`}>
+          <div
+            className={`flex flex-wrap gap-4 ${viewportFit ? "mt-8 mb-2 md:mb-4" : "mt-10"}`}
+          >
             <Link href={primaryHref} className={buttonVariants({ variant: "accent", size: "lg" })}>
               {primaryLabel}
             </Link>

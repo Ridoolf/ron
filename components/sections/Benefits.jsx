@@ -18,12 +18,7 @@ export function Benefits({
     <section className={bubble ? "section-premium bg-background" : "border-y border-border py-16 md:py-24"}>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <FadeIn className="mx-auto mb-12 max-w-3xl text-center">
-          <SectionHeading
-            label="Beneficios"
-            title={title}
-            align="center"
-            className="[&_.gold-rule]:mx-auto"
-          />
+          <SectionHeading title={title} align="center" />
         </FadeIn>
 
         <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -31,7 +26,7 @@ export function Benefits({
             const Icon = icons[index % icons.length];
             return (
               <StaggerItem key={item.title}>
-                <article className="flex h-full flex-col border border-white/10 bg-card p-7 text-center transition-colors hover:border-accent/40 md:p-8">
+                <article className="card-luminous-edge flex h-full flex-col p-7 text-center md:p-8">
                   <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center border border-accent/30 bg-accent/5">
                     <Icon className="h-6 w-6 text-accent" strokeWidth={1.25} />
                   </div>

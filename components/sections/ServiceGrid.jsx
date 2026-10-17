@@ -16,7 +16,7 @@ export function ServiceGrid({
     <section className={cn(bubble ? "section-premium bg-muted/40" : "py-16 md:py-24")}>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <FadeIn className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading label="Servicios" title={title} />
+          <SectionHeading title={title} />
           {showAllLink && (
             <Link
               href="/servicios"
