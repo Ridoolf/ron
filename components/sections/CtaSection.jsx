@@ -1,8 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { buttonVariants } from "@/components/ui/Button";
-import { IMAGES } from "@/lib/images";
 
 export function CtaSection({
   title = "Solicitá tu presupuesto",
@@ -27,16 +25,11 @@ export function CtaSection({
   }
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28">
-      <Image
-        src={IMAGES.hero.home}
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover"
+    <section className="relative overflow-hidden bg-[linear-gradient(145deg,#141414_0%,#0c0c0c_45%,#121212_100%)] py-20 md:py-28">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_0%,rgb(221_175_98_/_0.12),transparent_55%)]"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-dark/88" aria-hidden="true" />
 
       <FadeIn className="relative mx-auto max-w-3xl px-4 text-center md:px-6">
         <h2 className="heading-section text-2xl md:text-3xl lg:text-4xl">{title}</h2>

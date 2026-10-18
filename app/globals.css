@@ -60,6 +60,15 @@ body {
   font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
+select {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
 h1,
 h2,
 h3,

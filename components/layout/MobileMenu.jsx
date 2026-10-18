@@ -61,7 +61,9 @@ export function MobileMenu() {
         </div>
 
         <div className="flex flex-1 flex-col gap-1 overflow-y-auto">
-          {mainNav.map((item) => (
+          {mainNav
+            .filter((item) => item.href !== "/contacto")
+            .map((item) => (
             <div key={item.label} className="border-b border-white/10 py-3">
               <Link
                 href={item.href}

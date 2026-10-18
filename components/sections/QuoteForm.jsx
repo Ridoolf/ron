@@ -5,6 +5,7 @@ import { BUDGET_TYPES, buildWhatsAppUrl } from "@/lib/whatsapp";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { BudgetTypeSelect } from "@/components/ui/BudgetTypeSelect";
 
 export function QuoteForm() {
   const [form, setForm] = useState({
@@ -36,20 +37,15 @@ export function QuoteForm() {
           <label htmlFor="tipo" className="mb-2 block text-xs uppercase tracking-wide text-muted-foreground">
             Tipo de presupuesto
           </label>
-          <select
+          <BudgetTypeSelect
             id="tipo"
             name="tipo"
             value={form.tipo}
-            onChange={handleChange}
+            options={BUDGET_TYPES}
+            onChange={(tipo) => setForm((prev) => ({ ...prev, tipo }))}
             required
             className={cn(inputClass, "cursor-pointer")}
-          >
-            {BUDGET_TYPES.map((type) => (
-              <option key={type.value} value={type.value}>
-                {type.label}
-              </option>
-            ))}
-          </select>
+          />
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
